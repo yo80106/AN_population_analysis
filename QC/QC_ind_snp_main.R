@@ -18,7 +18,7 @@ write.table(fam,"./new.fam",col.names = F,row.names = F,quote = F)
 sex_check("taitung", "taitung")
 
 ## Missing data rates and outlying heterozygosity
-missing_het_ind("taitung", "96samples_sex_list.csv", "taitung")
+missing_het_ind("taitung", "pop_list", "taitung")
 
 ## IBD
 IBD("taitung","taitung")
