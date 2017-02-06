@@ -17,7 +17,7 @@ sex_check = function(input.name, output.name){
     write.table(fail_sex_id, paste0(output.name, "_sex_problem.list"), col.names = F, row.names = F, quote = F)
 }
 
-missing_het_ind = function(input.name, sex.list, output.name){
+missing_het_ind = function(input.name, pop.list, output.name){
     system(paste0("plink --bfile ",input.name," --missing --out ",output.name))
     system(paste0("plink --bfile ",input.name," --het --out ",output.name))
     
@@ -33,13 +33,13 @@ missing_het_ind = function(input.name, sex.list, output.name){
     # Find out 'NaN' value in meanHet column
     # het$Het_propo = ifelse(het$Het_propo=="NaN", 0,het$Het_propo) 
     
-    read.csv(sex.list, header = F)
-    pop = names(table(sex$V4))
+    sex = read.table(paste0(pop.list,".txt"), header = F)
+    pop = names(table(sex[,3]))
     pop_col = rainbow(length(pop))
     colors = densCols(imiss$logF_MISS,het$Het_propo)
-    for(i in 1:length(sex$V2)){
-        if(sex$V2[i] == het$IID[i]){
-            colors[i] = pop_col[sex$V4[i]]
+    for(i in 1:length(sex[,2])){
+        if(sex[,2][i] == het$IID[i]){
+            colors[i] = pop_col[sex[,3][i]]
         }
     }
     pdf("imiss-vs-het.pdf")
