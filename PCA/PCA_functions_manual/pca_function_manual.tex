@@ -1,0 +1,148 @@
+\documentclass{article}
+\title{PCA Functions User Manual}
+\author{Chen Chun-Yu}
+\textwidth=6.2in
+\textheight=8.5in
+\oddsidemargin=.1in
+\evensidemargin=.1in
+\headheight=-.3in
+\usepackage{subfigure}
+
+\usepackage{Sweave}
+\begin{document}
+\input{pca_function_manual-concordance}
+\maketitle
+\tableofcontents
+\newpage
+\section{Introduction}
+This manual shows you how to use the PCA function to perform the analysis and gives an example for demonstration.
+\section{Prerequest}
+To make the functions run successfully, please ensure you have installed PLINK in previous.\\
+After you installed PLINK, please copy it from defult folder and paste it to /usr/local/bin.
+\\\\\verb@$ cp ~/Bin/plink /usr/local/bin@\\\\\
+PCA function will detect whether you have installed three required packages: "gdsfmt", "SNPRelate", and "randomcoloR", 
+if you short of any of these it will install for you automatically.
+\section{PCA Functions}
+\begin{itemize}
+    \item my\_pca(plink.file, data.clust, pop.list, output.name)
+    \begin{itemize}
+    \item plink.file \\
+    Please provide the name of your PLINK binary files(BED/BIM/FAM).
+    \end{itemize}
+    \begin{itemize}
+    \item data.clust \\
+    Please provide a list of indviduals with their population names which correspond to your FAM file.
+    An example file format as below:
+    \begin{table}[ht]
+    \centering
+    \begin{tabular}{lcr}
+    \hline
+    Family ID & Individual ID & Populations \\ 
+    \hline
+    1 & TDC13 & Paiwan \\ 
+    2 & TDC117 & Amis \\ 
+    3 & TDC18 & Bunun \\ 
+    4 & TDC129 & Amis \\
+    5 & TDC49 & Amis \\
+    6 & TDC497 & Puyuma \\
+    \hline
+    \end{tabular}
+    \end{table}
+    \end{itemize}
+    \begin{itemize}
+    \item pop.list \\
+    Please provide a list of populations that you are going to perform PCA.
+    An example file format as below:
+    \begin{table}[ht]
+    \centering
+    \begin{tabular}{lcr}
+    \hline
+    Populations \\ 
+    \hline
+    Paiwan \\ 
+    Amis \\ 
+    Bunun \\ 
+    Puyuma \\
+    \hline
+    \end{tabular}
+    \end{table}
+    \end{itemize}
+    \begin{itemize}
+    \item output.name \\
+    You need to name your output files. After the analysis, you will get three plots: PCA outcome("output.name\_pca.pdf"), 
+    pair plot for the first four PCs("output.name\_pairs.pdf"), and line plot that shows different variations capture by 
+    different components("output.name\_var.pdf").
+    Besides, you will also get a table which shows the detail information of PCA, including values of PC1 and PC2.("output.name\_pca.tab")
+    \end{itemize}
+\end{itemize}
+\section{Examples}
+Here we give you some examples of applying PCA functions we have illustrated. We used three different sets
+of populations for analysis: Taiwanese aborigines, Han populations, and Philipine populations.
+\begin{itemize}
+    \item Taiwanese aborigines
+    \begin{figure}[h]
+    \centering
+    \subfigure[PCA of Taiwanese aborigines]
+    {
+        \includegraphics[width=2.8in]{/Users/chenchun-yu/Project/raw_data/aborigines_pop_pca.pdf}
+    }
+    \\
+    \subfigure[Pair plot for the first four PCs.]
+    {
+        \includegraphics[width=2.8in]{/Users/chenchun-yu/Project/raw_data/aborigines_pop_pairs.pdf}
+    }
+    \subfigure[Variation captured by different PCs.]
+    {
+        \includegraphics[width=2.8in]{/Users/chenchun-yu/Project/raw_data/aborigines_pop_var.pdf}
+    }
+    \caption{Example 1 - Three kinds of output plots.}
+    \end{figure}
+\end{itemize}
+\newpage
+\begin{itemize}
+    \item Han populations
+    \begin{figure}[h]
+    \centering
+    \subfigure[PCA of Han populations]
+    {
+        \includegraphics[width=2.8in]{/Users/chenchun-yu/Project/raw_data/han_pop_pca.pdf}
+    }
+    \\
+    \subfigure[Pair plot for the first four PCs.]
+    {
+        \includegraphics[width=2.8in]{/Users/chenchun-yu/Project/raw_data/han_pop_pairs.pdf}
+    }
+    \subfigure[Variation captured by different PCs.]
+    {
+        \includegraphics[width=2.8in]{/Users/chenchun-yu/Project/raw_data/han_pop_var.pdf}
+    }
+    \caption{Example 2 - Three kinds of output plots.}
+    \end{figure}
+\end{itemize}
+\newpage
+\begin{itemize}
+    \item Philipines populations
+    \begin{figure}[h]
+    \centering
+    \subfigure[PCA of Philipines populations]
+    {
+        \includegraphics[width=2.8in]{/Users/chenchun-yu/Project/raw_data/philipine_pop_pca.pdf}
+    }
+    \\
+    \subfigure[Pair plot for the first four PCs.]
+    {
+        \includegraphics[width=2.8in]{/Users/chenchun-yu/Project/raw_data/philipine_pop_pairs.pdf}
+    }
+    \subfigure[Variation captured by different PCs.]
+    {
+        \includegraphics[width=2.8in]{/Users/chenchun-yu/Project/raw_data/philipine_pop_var.pdf}
+    }
+    \caption{Example 3 - Three kinds of output plots.}
+    \end{figure}
+\end{itemize}
+\begin{thebibliography}{1}
+\bibitem{notes} Purcell S, Neale B, Todd-Brown K, et al. {PLINK: A Tool Set for Whole-Genome Association and Population-Based Linkage Analyses. 
+\em American Journal of Human Genetics.} 2007;81(3):559-575.
+\bibitem{notes} Zheng X, Levine D, Shen J, Gogarten SM, Laurie C, Weir BS. {A high-performance computing toolset for relatedness and principal component analysis of SNP data. \em Bioinformatics.} 2012;28(24):3326-3328. doi:10.1093/bioinformatics/bts606.
+\end{thebibliography}
+\end{document}
