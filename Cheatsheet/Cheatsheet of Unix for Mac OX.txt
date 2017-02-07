@@ -1,0 +1,70 @@
+Cheatsheet of Unix for Mac OX
+
+###Shell
+
+echo $SHELL
+#Show the "log in" shell.
+
+echo $0
+#Show the current working shell.
+
+###Working directory
+
+pwd
+#Present working directory.
+
+cd -
+#Change to the directory that you just worked.
+
+mv -n
+#No overwriting.
+
+mv -f 
+#Force overwriting.(defult)
+
+mv -i
+#Interative overwriting, "ask me".
+
+###Creating directory
+
+mkdir -p
+#Make a parent directory and its sub-directory. 
+
+###Reading files
+
+cat
+#Concatenate. But not convinence in large file.(It will show up the whole file.)
+
+more
+#Paginated output. Show up the file in seperate pages. But cannot go back to the previous page.
+
+less
+#Backward scrolling. "Space" for next page, "g" for beginning of file, "shift+g" for the end of file.
+less -M
+#Much better view.
+less -N
+#Show the lines number.
+
+###Copy files and directories.
+
+cp -[options same as mv above ]
+#Copy the files.
+
+cp -R
+#Copy the whole directory.
+
+###Remove the directory
+
+rmdir
+#Only remove the directory which is empty.
+
+rm -R
+#Remove the directory and its cintent.
+
+###Find the file
+
+find ~ -name *.log
+#Find the path(~) which contains the expression(name which end with .log).
+
+find ~ -name ????.log
+#Find the files in home directory which have four characters before ".log".

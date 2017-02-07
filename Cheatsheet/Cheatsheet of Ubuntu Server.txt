@@ -1,0 +1,97 @@
+Cheatsheet of Ubuntu Server
+
+###Basic Commands
+
+##Shutdown
+sudo shutdown -h now
+#Shutdown the machine right now.
+
+sudo shutdown -h now "System maintenance!"
+#Give a message to other users.
+
+sudo shutdown -h +10 "System is going down for repair soon!"
+#Machine will shutdown in 10 minutes and send the message to other user.
+
+sudo shutdown -h 17:00 "This is optional message!"
+#Machine will shutdown at 17:00 and send the message.
+
+sudo shutdown -r now
+#Reboot the machine right now.
+
+##Runlevel
+runlevel
+#Show the runlevel.
+
+sudo telinit 0 
+#Change the runlevel to 0, and system will shutdown
+
+0:shutdown
+1:single uode
+2:normal mode
+4-5:safe mode
+6:reboot
+
+###System Management
+
+##Date and time
+date
+#Show the date.
+
+sudo date MMddhhmmyyyy.ss
+#Change the date and time.
+
+##User and group management
+sudo adduser test1
+#Adding new user called 'test1', and set up its password.
+
+sudo addgroup testgroup
+#Adding new group.
+
+groups
+#Show the groups that current user was belong to. NOT SHOW ALL USERS IN THIS SYSTEM!
+
+groups test1
+#Show the groups that user 'test1' belong to.
+
+cat /etc/group/
+#Show the all groups in this system.
+
+cat /etc/passwd
+#Show the all usrs in this system.
+
+sudo passwd test1
+#Change user 'test1' password.
+
+sudo deluser quest1
+#Delete the user 'quest1'.
+
+sudo groupdel laudah
+#Delete the group 'laudah'.
+
+sudo adduser test1 testy
+#Add the user 'test1' to the group 'testy'.
+
+sudo deluser test1 testy
+#Delete the user 'test1' from the group 'testy'.
+
+##Install program
+sudo apt-get install pente
+#Install the program called 'pente'.
+
+sudo apt-cache search ftp
+#Search the program that related to ftp.
+
+sudo apt-get update
+#Update the indexes in your repositories. NOT PROGRAMS!
+
+sudo apt-get upgrade
+#Upgrade all the program.
+
+sudo nano /etc/apt/sources.list
+#List all the repositories that system will utilize.
+
+sudo do-release-upgrade
+#Find for new version of Ubuntu to upgrade.
+
+sudo apt-get remove pente
+#Remove the program 'pente'.

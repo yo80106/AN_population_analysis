@@ -1,0 +1,99 @@
+Cheatsheet of Git
+
+###Basic git command
+
+git --version
+#To test if there was git avaliable.
+
+git init my_first_respoitory
+#To create a new repository.
+
+nano README
+#To create a new markdown file called "README" and write something there.
+ 
+git add README
+#Added "README" file to the repository, then strat to tracked by git.
+
+git commit
+#Commit the file.
+*** set nano as your default editor in general:export EDITOR=nano
+
+git config --global user.name "Chen,Chun-Yu"
+#Set up your user name.
+
+git config --global user.email "yo80106@gmail.com"
+#Set up your user e-mail.
+
+git commit -a -m "Added the mission statement of README file."
+#Added the comments to the "README" file. -a for "all", -m for "message".
+
+git rm <file>
+git commit -a -m "Deleted the file collatz_sequence.py."
+git push
+#Remove file from git repository.
+
+git rm --cached
+#Keep the file in your working tree but remove it from your staging area.
+
+git status
+#To see the status of your repository.(if there are any files didn't commit yet)
+
+###Switch to older version of the files
+
+git log
+#To see the hisitry of git.
+
+git checkout d55b0
+#To look into the specific change by entered the identifier.(in few characters)
+
+git checkout master
+#Go back to most recent working place.(in this case is master branch)
+
+###Branching
+
+git branch foo_feature
+#Set up the new branch.
+
+git checkout foo_feature
+#Switch to the specific branch.
+
+git checkout -b bar_feature
+#Other way to create new branch.
+
+git branch -D bar_feature
+#Delete the branch.
+
+git merge foo_feature
+#Merge the branch to master branch.
+
+git add README
+git commit
+#After resolve the conflict problem, it was important to let git know you care about the file, so give the "add" command.
+
+###Remote repository
+
+git clone ./my_really_cool_project/ new_clone
+#Clone new repository from remote place. Enter the originated repository first, and give the name to new repository.
+
+git remote add fuck_clone ../new_clone/
+#Make a remote connect to clone repository in originated one.
+
+git push origin new_branch
+#Push changes to the remote repository.(In this case, push to the originated repository.)
+
+git pull fuck_clone new_branch
+#Pull changes from remote repository.(In this case, pull from the clone repository which called fuck_clone.)
+
+###Trouble shooting
+
+fatal: remote origin already exists.
+As the error message indicates, there is already a remote configured with the same name. So you can either add the new remote with a different name or update the existing one if you don't need it:
+
+To add a new remote, called for example github instead of origin:
+$ git remote add github git@github.com:ppreyer/first_app.git(connection provied by github)
+
+If you want to see what that origin which already exists is, you can do:
+$ git remote -v. 
+
+If you think this is there by some error, you can update it like so:
+$ git remote set-url origin git@github.com:ppreyer/first_app.git
