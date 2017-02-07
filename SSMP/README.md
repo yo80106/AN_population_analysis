@@ -1,2 +1,2 @@
-This folder stores the scripts which I uesd to analyze Singapore Sequencing Malay Project.
+This folder stores the scripts which I used to analyze Singapore Sequencing Malay Project.
 http://www.statgen.nus.edu.sg/~SSMP/
