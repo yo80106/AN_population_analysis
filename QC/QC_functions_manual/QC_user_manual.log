@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  6 FEB 2017 16:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  25 APR 2017 11:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -344,24 +344,24 @@ Overfull \vbox (21.68121pt too high) has occurred while \output is active []
 
 
 [2]
-Overfull \hbox (4.68007pt too wide) in paragraph at lines 63--66
+Overfull \hbox (4.68007pt too wide) in paragraph at lines 70--73
 \T1/aer/m/n/10 You still need to give in-put and ouput names for the anal-y-sis
 . You will get a plot("snpmiss_plot.pdf")
  []
 
 
-Overfull \hbox (2.1605pt too wide) in paragraph at lines 66--69
+Overfull \hbox (2.1605pt too wide) in paragraph at lines 73--76
 \T1/aer/m/n/10 You still need to give in-put and ouput names for the anal-y-sis
 . You will get a plot("hwe_p_value.pdf")
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--73
+Underfull \hbox (badness 10000) in paragraph at lines 77--80
 
  []
 
 
-Overfull \hbox (18.28535pt too wide) in paragraph at lines 70--73
+Overfull \hbox (18.28535pt too wide) in paragraph at lines 77--80
 []\T1/aett/m/n/10 plink --bfile your.PLINK.bfile --maf 0.01 --geno 0.03 --hwe 0
 .00001 --make-bed --out out-
  []
@@ -371,78 +371,84 @@ Overfull \vbox (21.68121pt too high) has occurred while \output is active []
 
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 75--76
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
 
  []
 
 
-</Users/chenchun-yu/Project/raw_data/sex_distribution.pdf, id=20, 505.89pt x 50
-5.89pt>
-File: /Users/chenchun-yu/Project/raw_data/sex_distribution.pdf Graphic file (ty
-pe pdf)
- <use /Users/chenchun-yu/Project/raw_data/sex_distribution.pdf>
-Package pdftex.def Info: /Users/chenchun-yu/Project/raw_data/sex_distribution.p
-df used on input line 83.
+</Users/chenchun-yu/Git/QC/QC_functions_manual/sex_distribution.pdf, id=20, 505
+.89pt x 505.89pt>
+File: /Users/chenchun-yu/Git/QC/QC_functions_manual/sex_distribution.pdf Graphi
+c file (type pdf)
+
+<use /Users/chenchun-yu/Git/QC/QC_functions_manual/sex_distribution.pdf>
+Package pdftex.def Info: /Users/chenchun-yu/Git/QC/QC_functions_manual/sex_dist
+ribution.pdf used on input line 90.
 (pdftex.def)             Requested size: 202.35622pt x 202.36012pt.
 
-</Users/chenchun-yu/Project/raw_data/imiss-vs-het.pdf, id=21, 505.89pt x 505.89
-pt>
-File: /Users/chenchun-yu/Project/raw_data/imiss-vs-het.pdf Graphic file (type p
-df)
- <use /Users/chenchun-yu/Project/raw_data/imiss-vs-het.pdf>
-Package pdftex.def Info: /Users/chenchun-yu/Project/raw_data/imiss-vs-het.pdf u
-sed on input line 88.
+</Users/chenchun-yu/Git/QC/QC_functions_manual/imiss-vs-het.pdf, id=21, 505.89p
+t x 505.89pt>
+File: /Users/chenchun-yu/Git/QC/QC_functions_manual/imiss-vs-het.pdf Graphic fi
+le (type pdf)
+
+<use /Users/chenchun-yu/Git/QC/QC_functions_manual/imiss-vs-het.pdf>
+Package pdftex.def Info: /Users/chenchun-yu/Git/QC/QC_functions_manual/imiss-vs
+-het.pdf used on input line 95.
 (pdftex.def)             Requested size: 202.35622pt x 202.36012pt.
 
-Underfull \hbox (badness 3826) in paragraph at lines 88--88
+Underfull \hbox (badness 3826) in paragraph at lines 95--95
 []\T1/aer/m/n/8 (b) Dis-tri-bu-tion of miss-ing-ness and het-erozy-gos-ity
  []
 
-</Users/chenchun-yu/Project/raw_data/IBD.pdf, id=22, 505.89pt x 505.89pt>
-File: /Users/chenchun-yu/Project/raw_data/IBD.pdf Graphic file (type pdf)
 
-<use /Users/chenchun-yu/Project/raw_data/IBD.pdf>
-Package pdftex.def Info: /Users/chenchun-yu/Project/raw_data/IBD.pdf used on in
-put line 92.
+</Users/chenchun-yu/Git/QC/QC_functions_manual/IBD.pdf, id=22, 505.89pt x 505.8
+9pt>
+File: /Users/chenchun-yu/Git/QC/QC_functions_manual/IBD.pdf Graphic file (type 
+pdf)
+ <use /Users/chenchun-yu/Git/QC/QC_functions_manual/IBD.pdf>
+Package pdftex.def Info: /Users/chenchun-yu/Git/QC/QC_functions_manual/IBD.pdf 
+used on input line 99.
 (pdftex.def)             Requested size: 202.35622pt x 202.36012pt.
 
-</Users/chenchun-yu/Project/raw_data/snpmiss_plot.pdf, id=23, 505.89pt x 505.89
-pt>
-File: /Users/chenchun-yu/Project/raw_data/snpmiss_plot.pdf Graphic file (type p
-df)
- <use /Users/chenchun-yu/Project/raw_data/snpmiss_plot.pdf>
-Package pdftex.def Info: /Users/chenchun-yu/Project/raw_data/snpmiss_plot.pdf u
-sed on input line 101.
+</Users/chenchun-yu/Git/QC/QC_functions_manual/snpmiss_plot.pdf, id=23, 505.89p
+t x 505.89pt>
+File: /Users/chenchun-yu/Git/QC/QC_functions_manual/snpmiss_plot.pdf Graphic fi
+le (type pdf)
+
+<use /Users/chenchun-yu/Git/QC/QC_functions_manual/snpmiss_plot.pdf>
+Package pdftex.def Info: /Users/chenchun-yu/Git/QC/QC_functions_manual/snpmiss_
+plot.pdf used on input line 108.
 (pdftex.def)             Requested size: 202.35622pt x 202.36012pt.
 
-</Users/chenchun-yu/Project/raw_data/hwe_p_value.pdf, id=24, 505.89pt x 505.89p
-t>
-File: /Users/chenchun-yu/Project/raw_data/hwe_p_value.pdf Graphic file (type pd
-f)
- <use /Users/chenchun-yu/Project/raw_data/hwe_p_value.pdf>
-Package pdftex.def Info: /Users/chenchun-yu/Project/raw_data/hwe_p_value.pdf us
-ed on input line 105.
+</Users/chenchun-yu/Git/QC/QC_functions_manual/hwe_p_value.pdf, id=24, 505.89pt
+ x 505.89pt>
+File: /Users/chenchun-yu/Git/QC/QC_functions_manual/hwe_p_value.pdf Graphic fil
+e (type pdf)
+
+<use /Users/chenchun-yu/Git/QC/QC_functions_manual/hwe_p_value.pdf>
+Package pdftex.def Info: /Users/chenchun-yu/Git/QC/QC_functions_manual/hwe_p_va
+lue.pdf used on input line 112.
 (pdftex.def)             Requested size: 202.35622pt x 202.36012pt.
 
 Overfull \vbox (21.68121pt too high) has occurred while \output is active []
 
 
-[4 </Users/chenchun-yu/Project/raw_data/sex_distribution.pdf> </Users/chenchun-
-yu/Project/raw_data/imiss-vs-het.pdf> </Users/chenchun-yu/Project/raw_data/IBD.
-pdf>]
+[4 </Users/chenchun-yu/Git/QC/QC_functions_manual/sex_distribution.pdf> </Users
+/chenchun-yu/Git/QC/QC_functions_manual/imiss-vs-het.pdf> </Users/chenchun-yu/G
+it/QC/QC_functions_manual/IBD.pdf>]
 Overfull \vbox (21.68121pt too high) has occurred while \output is active []
 
 
-[5 </Users/chenchun-yu/Project/raw_data/snpmiss_plot.pdf> </Users/chenchun-yu/P
-roject/raw_data/hwe_p_value.pdf>] (./QC_user_manual.aux)
+[5 </Users/chenchun-yu/Git/QC/QC_functions_manual/snpmiss_plot.pdf> </Users/che
+nchun-yu/Git/QC/QC_functions_manual/hwe_p_value.pdf>] (./QC_user_manual.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
  2930 strings out of 493089
- 42913 string characters out of 6134842
- 95247 words of memory out of 5000000
+ 43123 string characters out of 6134842
+ 95252 words of memory out of 5000000
  6329 multiletter control sequences out of 15000+600000
  31197 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -457,7 +463,7 @@ ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
 l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local
 /texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/
 texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on QC_user_manual.pdf (5 pages, 180961 bytes).
+Output written on QC_user_manual.pdf (5 pages, 182464 bytes).
 PDF statistics:
  96 PDF objects out of 1000 (max. 8388607)
  68 compressed objects within 1 object stream
