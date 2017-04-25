@@ -68,7 +68,7 @@ missing_het_ind = function(input.name, pop.list, output.name){
 }
 
 IBD = function(input.name, output.name){
-    system(paste0("plink --file ",input.name," --indep-pairwise 50 5 0.2 --out ",output.name))
+    system(paste0("plink --bfile ",input.name," --indep-pairwise 50 5 0.2 --out ",output.name))
     system(paste0("plink --bfile ",input.name," --extract ",output.name,".prune.in --genome --out ",output.name))
     system(paste0("plink --bfile ",input.name," --missing --out ",output.name))
     ibd_data = read.table(paste0(output.name, ".genome"), header = T)
@@ -123,6 +123,100 @@ ind_qc_rm = function(input.name, output.name){
         print("There are more than three problem list files in your directory!")
         }
     fail_qc_inds = write.table(unique(a[order(a$V1),]), paste0(output.name, "_fail_ind_qc.txt"), row.names = F, col.names = F, quote = F)   
+}
+
+ind_qc_info = function(input.name, output.name){
+    # if(sum(installed.packages(.libPaths())[,1] %in% "venneuler") == 0){
+    #     install.packages("venneuler")
+    # }
+    # library(venneuler)
+    problem_all = c()
+    if(length(list.files(pattern = paste0(input.name,"_sex_problem.list")) == 1)){
+        ind_sex = read.table(paste0(input.name, "_sex_problem.list"), stringsAsFactors = F)
+        print("Loading sex problem list.")
+        problem_all = c(problem_all, Sex = ind_sex)
+    }else if(length(list.files(pattern = paste0(input.name,"_sex_problem.list")) == 0)){
+        print("No sex problem list!")
+    }else{
+        print("There are something wrong with sex problem list.")
+    }
+    if(length(list.files(pattern = paste0(input.name,"_ibd_problem.list")) == 1)){
+        ind_ibd = read.table(paste0(input.name, "_ibd_problem.list"), stringsAsFactors = F)
+        print("Loading ibd problem list.")
+        problem_all = c(problem_all, IBD = ind_ibd)
+    }else if(length(list.files(pattern = paste0(input.name,"_sex_problem.list")) == 0)){
+        print("No ibd problem list!")
+    }else{
+        print("There are something wrong with ibd problem list.")
+    }
+    if(length(list.files(pattern = paste0(input.name,"_miss_het_problem.list")) == 1)){
+        ind_miss = read.table(paste0(input.name, "_miss_het_problem.list"), stringsAsFactors = F)
+        print("Loading het and miss problem list.")
+        problem_all = c(problem_all, Miss = ind_miss)
+    }else if(length(list.files(pattern = paste0(input.name,"_miss_het_problem.list")) == 0)){
+        print("No het and miss problem list!")
+    }else{
+        print("There are something wrong with miss problem list.")
+    }
+    if(length(problem_all) == 6){
+        ABC = Reduce(intersect, c(problem_all[1], problem_all[3], problem_all[5]))
+        AB = Reduce(intersect, c(problem_all[1], problem_all[3]))
+        AC = Reduce(intersect, c(problem_all[1], problem_all[5]))
+        BC = Reduce(intersect, c(problem_all[3], problem_all[5]))
+        out_table = list(ABC, AB, AC, BC)
+        
+        A = sub("\\..*", "", names(problem_all[1]))
+        B = sub("\\..*", "", names(problem_all[3]))
+        C = sub("\\..*", "", names(problem_all[5]))
+        names(out_table) = c(paste(A, B, C, sep = "+"), paste(A, B, sep = "+"), paste(A, C, sep = "+"), paste(B, C, sep = "+"))
+        df = List_to_DF(out_table)
+        write.csv(df, file = paste0(output.name, "_ind_qc_info.csv"), quote = F, row.names = F)
+        # AB_num = length(out_table[[2]])
+        # AC_num = length(out_table[[3]])
+        # BC_num = length(out_table[[4]])
+        # ABC_num = length(out_table[[1]])
+        # A_num = length(problem_all[[1]]) - AB_num - AC_num + ABC_num
+        # B_num = length(problem_all[[3]]) - AB_num - BC_num + ABC_num
+        # C_num = length(problem_all[[5]]) - AC_num - BC_num + ABC_num
+        # threeVen = venneuler(c(A = A_num , B = B_num, C = C_num,
+        #                   "A&B" = AB_num, "A&C" = AC_num, 
+        #                      "B&C" = BC_num, "A&B&C" = ABC_num))
+        # threeVen$labels = c(
+        #     paste0(A, "\n", length(problem_all[[1]])),
+        #     paste0(B, "\n", length(problem_all[[3]])),
+        #     paste0(C, "\n", length(problem_all[[5]]))
+        # )
+        # pdf(paste0(output.name, "_threeVen.pdf"))
+        # plot(threeVen)
+        # dev.off()
+    }else if(length(problem_all) == 4){
+        AB = Reduce(intersect, c(problem_all[1], problem_all[3]))
+        A = sub("\\..*", "", names(problem_all[1]))
+        B = sub("\\..*", "", names(problem_all[3]))
+        df = data.frame(AB)
+        colnames(df) = paste(A, B, sep = "+")
+        write.csv(df, file = paste0(output.name, "_ind_qc_info.csv"), quote = F, row.names = F)
+        # twoVen = venneuler(c(A = length(problem_all[[1]]), B = length(problem_all[[3]]), "A&B" = length(out_table[[2]])))
+        # twoVen$labels = c(
+        #     paste0(A, "\n", length(problem_all[[1]])),
+        #     paste0(B, "\n", length(problem_all[[3]]))
+        # )
+        # pdf(paste0(output.name, "_tewVen.pdf"))
+        # plot(twoVen)
+        # dev.off()
+    }
+}
+
+List_to_DF = function(input.list){
+    lengths = lapply(input.list, length)
+    max_num = as.integer(lengths[which.max(lengths)])
+    new_df = matrix(nrow = max_num, ncol = length(input.list))
+    for(n in 1:length(input.list)){
+        new_df[,n] = c(unlist(input.list[n]), rep("-", max_num-lengths(input.list[n])))
+    }
+    new_df = as.data.frame(new_df, stringsAsFactors = F)
+    colnames(new_df) = c(names(input.list))
+    return(new_df)
 }
 
 missing_snp = function(input.name, output.name){
