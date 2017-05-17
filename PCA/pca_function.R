@@ -28,9 +28,9 @@ my_pca = function(plink.file, data.clust, pop.list, output.name){
     pc.percent = round(pca$varprop*100, 2)
     tab = data.frame(sample.id = pca$sample.id,
                      pop = factor(pop)[match(pca$sample.id, sample.id)],
-                     EV1 = pca$eigenvect[,1],    # the first eigenvector
+                     EV1 = pca$eigenvect[,1],   # the first eigenvector
                      EV2 = pca$eigenvect[,2],   # the second eigenvector
-                     varprop = pc.percent
+                     varprop = c(pc.percent, rep(NA, length(pca$sample.id) - length(pc.percent)))
     )
     write.table(tab, file = paste0(output.name, "_pca.tab"), quote = F, row.names = F, col.names = F)
     palette(distinctColorPalette(k = nlevels(tab$pop)))
