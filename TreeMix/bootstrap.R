@@ -17,21 +17,21 @@ for (n in 1:50) {
 system("mkdir bootstrap_data")
 system("mv *.treeout.gz bootstrap_data/")
 
-    file_list = list.files("./",pattern = ".gz")
-    for(x in file_list){
-        if(!exists("read_line")){
-            read_line = readLines(x)
-            next()
-        }
-        if(exists("read_line")){
-            temp = readLines(x)
-            read_line = rbind(read_line,temp,deparse.level = 0)
-            rm(temp)
-        }
+file_list = list.files("./",pattern = ".gz")
+for(x in file_list){
+    if(!exists("read_line")){
+        read_line = readLines(x)
+        next()
     }
-    concat = gsub('[0-9:.]+', '', read_line)
-    concat = gsub("e-","",concat)
-    write.table(concat,"./newick",row.names = F,col.names = F,quote = F)
+    if(exists("read_line")){
+        temp = readLines(x)
+        read_line = rbind(read_line,temp,deparse.level = 0)
+        rm(temp)
+    }
+}
+concat = gsub('[0-9:.]+', '', read_line)
+concat = gsub("e-","",concat)
+write.table(concat,"./newick",row.names = F,col.names = F,quote = F)
 
 # Mutiple Cores
 a = c()
